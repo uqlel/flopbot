@@ -1,5 +1,5 @@
 const Discord = require("discord.js")
-const client = new Discord.Client()
+const client = new Discord.Client({ intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGES] })
 const fs = require("fs")
 require("dotenv").config()
 const ascii = require("ascii-table")

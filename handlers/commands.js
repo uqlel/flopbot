@@ -1,10 +1,11 @@
 const fs = require("fs");
 const ascii = require("ascii-table")
+const {Collection} = require("discord.js");
 const table = new ascii().setHeading('Command', 'Status');
 module.exports = {
-    execute: function(client) {
+    execute: async function(client) {
+        client.commands = new Collection()
         const commands = fs.readdirSync(`./commands/`).filter(file => file.endsWith(".js"));
-
         for (let file of commands) {
             try {
                 pull = require(`../commands/${file}`)
@@ -15,11 +16,8 @@ module.exports = {
             }
 
             if (pull.name) {
-                // TO DO: add slash command
-            } else {
-                continue;
+                client.commands.set(pull.name, pull);
             }
-            if (pull.aliases && Array.isArray(pull.aliases)) pull.aliases.forEach(alias => client.aliases.set(alias, pull.name));
         }
         console.log(table.toString())
     }

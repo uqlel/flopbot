@@ -7,7 +7,7 @@ module.exports = {
             const commands = await client.guilds.cache.get(process.env.GUILD_ID).commands.set(require("../slash.json"));
             const embed = new MessageEmbed()
                 .setTitle("Komendy zostały zaaktualizowane!")
-                .setDescription("```js\n" + commands + "```")
+                .setDescription("```js\n" + JSON.stringify(commands) + "```")
             message.reply({embeds: [embed]})
         }
     }

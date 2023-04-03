@@ -1,4 +1,6 @@
 # FlopBot - A bot for YourCraft.pl server
+## This project was abandoned
+It won't recieve any new updates
 ## Installation
 Just `npm install`.
 ## Configuring
